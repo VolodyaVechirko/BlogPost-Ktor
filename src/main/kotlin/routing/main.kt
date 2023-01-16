@@ -8,6 +8,7 @@ import io.ktor.server.response.*
 import io.ktor.server.routing.*
 
 val dao: PostDao = PostDaoImpl()
+
 fun Application.configureRouting() {
     routing {
         static("/static") {
