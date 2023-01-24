@@ -28,9 +28,9 @@ fun Route.postApi(dao: PostDao) {
         val post = dao.create(title, body)
 
         if (post != null) {
-            call.respond(HttpStatusCode.OK, post)
+            call.respond(HttpStatusCode.Created, post)
         } else {
-            call.respond(HttpStatusCode.Forbidden)
+            call.respond(HttpStatusCode.UnprocessableEntity)
         }
     }
     get("{id}") {
@@ -60,7 +60,7 @@ fun Route.postApi(dao: PostDao) {
         if (post != null) {
             call.respond(HttpStatusCode.OK, post)
         } else {
-            call.respond(HttpStatusCode.Conflict)
+            call.respond(HttpStatusCode.UnprocessableEntity)
         }
     }
     delete("{id}") {
