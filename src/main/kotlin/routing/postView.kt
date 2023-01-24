@@ -7,13 +7,23 @@ import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import io.ktor.server.util.*
+import models.pageOwner
+import models.postLinks
+import models.tagList
+
+val baseData = mutableMapOf(
+    "author" to pageOwner,
+    "tagList" to tagList,
+    "postLinks" to postLinks,
+)
 
 fun Route.postView(dao: PostDao) {
     get {
-        call.respond(FreeMarkerContent("index.ftl", mapOf("articles" to dao.getAll())))
+        val data = baseData + ("postList" to dao.getAll())
+        call.respond(FreeMarkerContent("index.ftl", model = data))
     }
     get("new") {
-        call.respond(FreeMarkerContent("create.ftl", model = null))
+        call.respond(FreeMarkerContent("create.ftl", model = baseData))
     }
     post {
         val formParameters = call.receiveParameters()
@@ -24,11 +34,13 @@ fun Route.postView(dao: PostDao) {
     }
     get("{id}") {
         val id = call.parameters.getOrFail<Int>("id")
-        call.respond(FreeMarkerContent("show.ftl", mapOf("article" to dao.get(id))))
+        val data = baseData + ("post" to dao.get(id))
+        call.respond(FreeMarkerContent("show.ftl", model = data))
     }
     get("{id}/edit") {
         val id = call.parameters.getOrFail<Int>("id")
-        call.respond(FreeMarkerContent("edit.ftl", mapOf("article" to dao.get(id))))
+        val data = baseData + ("post" to dao.get(id))
+        call.respond(FreeMarkerContent("edit.ftl", model = data))
     }
     post("{id}") {
         val id = call.parameters.getOrFail<Int>("id")

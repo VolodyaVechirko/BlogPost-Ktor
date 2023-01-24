@@ -1,4 +1,7 @@
 <#macro header>
+<#-- @ftlvariable name="author" type="models.PageOwner" -->
+<#-- @ftlvariable name="tagList" type="kotlin.collections.List<kotlin.String>" -->
+<#-- @ftlvariable name="postLinks" type="kotlin.collections.List<models.PostLink>" -->
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -34,10 +37,10 @@
           <div class="w3-col l4">
             <!-- About Card -->
             <div class="w3-card w3-margin w3-margin-top">
-            <img src="/static/ana.jpg" style="width:100%">
+            <img src="${author.avatarUrl}" style="width:100%">
               <div class="w3-container w3-white">
-                <h4><b>Anastasiia</b></h4>
-                <p>Just me, myself and I, exploring the universe of uknownment. I have a heart of love and a interest of lorem ipsum and mauris neque quam blog. I want to share my world with you.</p>
+                <h4><b>${author.fullName}</b></h4>
+                <p>${author.aboutMe}</p>
                 <p>
                   <a href="/articles/new" class="w3-button w3-padding-large w3-white w3-border"><b>NEW STORY »</b></a>
                 </p>
@@ -50,26 +53,13 @@
                 <h4>Popular Posts</h4>
               </div>
               <ul class="w3-ul w3-hoverable w3-white">
-                <li class="w3-padding-16">
-                  <img src="/static/box_workshop.jpeg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
-                  <span class="w3-large">Lorem</span><br>
-                  <span>Sed mattis nunc</span>
-                </li>
-                <li class="w3-padding-16">
-                  <img src="/static/box_gondol.jpeg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
-                  <span class="w3-large">Ipsum</span><br>
-                  <span>Praes tinci sed</span>
-                </li>
-                <li class="w3-padding-16">
-                  <img src="/static/box_skies.jpeg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
-                  <span class="w3-large">Dorum</span><br>
-                  <span>Ultricies congue</span>
-                </li>
-                <li class="w3-padding-16 w3-hide-medium w3-hide-small">
-                  <img src="/static/box_rock.jpeg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
-                  <span class="w3-large">Mingsum</span><br>
-                  <span>Lorem ipsum dipsum</span>
-                </li>
+                <#list postLinks?reverse as link>
+                  <li class="w3-padding-16">
+                    <img src="${link.imageUrl}" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+                    <span class="w3-large">${link.title}</span><br>
+                    <span>${link.subtitle}</span>
+                  </li>
+                </#list>
               </ul>
             </div>
             <hr>
@@ -80,11 +70,14 @@
                 <h4>Tags</h4>
               </div>
               <div class="w3-container w3-white">
-              <p><span class="w3-tag w3-black w3-margin-bottom">Travel</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">New York</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">London</span>
-                <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">IKEA</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">NORWAY</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">DIY</span>
-                <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Ideas</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Baby</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Family</span>
-                <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">News</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Clothing</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Shopping</span>
-                <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Sports</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Games</span>
+              <p>
+                <#list tagList as tag>
+                  <#if tag == author.tag>
+                    <span class="w3-tag w3-black w3-margin-bottom">${tag}</span>
+                  <#else>
+                    <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">${tag}</span>
+                  </#if>
+                </#list>
               </p>
               </div>
             </div>

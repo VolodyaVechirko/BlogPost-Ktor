@@ -4,9 +4,6 @@ import kotlinx.serialization.Serializable
 import org.jetbrains.exposed.sql.Table
 
 @Serializable
-data class Status(val status: String)
-
-@Serializable
 data class Post(val id: Int, val title: String, val body: String)
 
 object Articles : Table() {
