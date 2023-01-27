@@ -29,8 +29,8 @@ fun Route.postView(dao: PostDao) {
         val formParameters = call.receiveParameters()
         val title = formParameters.getOrFail("title")
         val body = formParameters.getOrFail("body")
-        val article = dao.create(title, body)
-        call.respondRedirect("/articles/${article?.id}")
+        val id = dao.create(title, body)!!.id
+        call.respondRedirect("/articles/$id")
     }
     get("{id}") {
         val id = call.parameters.getOrFail<Int>("id")

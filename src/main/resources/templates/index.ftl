@@ -16,8 +16,8 @@
           <div class="w3-row">
             <div class="w3-col m8 s12">
               <p><a href="/articles/${post.id}">
-              <button class="w3-button w3-padding-large w3-white w3-border"><b>READ MORE »</b></button>
-              </a></p>
+                  <button class="w3-button w3-padding-large w3-white w3-border"><b>READ MORE »</b></button>
+                </a></p>
             </div>
             <div class="w3-col m4 w3-hide-small">
               <p><span class="w3-padding-large w3-right"><b>Comments </b> <span class="w3-badge">2</span></span></p>
