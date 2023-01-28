@@ -1,17 +1,13 @@
 import dao.DatabaseFactory
 import io.ktor.server.application.*
-import io.ktor.server.engine.*
-import io.ktor.server.netty.*
 import plugins.configureTemplating
 import routing.configureRouting
 
-fun main() {
-    embeddedServer(Netty, port = 8080, module = Application::module)
-        .start(wait = true)
-}
+fun main(args: Array<String>): Unit =
+    io.ktor.server.netty.EngineMain.main(args)
 
 fun Application.module() {
-    DatabaseFactory.init()
+    DatabaseFactory.init(environment.config)
     configureTemplating()
     configureRouting()
 }

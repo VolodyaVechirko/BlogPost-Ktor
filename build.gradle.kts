@@ -1,13 +1,26 @@
 plugins {
     kotlin("jvm") version "1.7.10"
-    kotlin("plugin.serialization") version "1.7.10"
+    id("io.ktor.plugin") version "2.2.2"
+    id("org.jetbrains.kotlin.plugin.serialization") version "1.8.0"
+    id("com.google.cloud.tools.appengine") version "2.4.2"
 }
 
-group = "org.test"
-version = "1.0-SNAPSHOT"
+application {
+    mainClass.set("io.ktor.server.netty.EngineMain")
+}
 
 repositories {
     mavenCentral()
+}
+
+configure<com.google.cloud.tools.gradle.appengine.appyaml.AppEngineAppYamlExtension> {
+    stage {
+        setArtifact("build/libs/${project.name}-all.jar")
+    }
+    deploy {
+        version = "GCLOUD_CONFIG"
+        projectId = "GCLOUD_CONFIG"
+    }
 }
 
 val ktorVersion = "2.2.1"
