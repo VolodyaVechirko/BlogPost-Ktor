@@ -2,10 +2,10 @@
 <#import "_layout.ftl" as layout />
 <@layout.header>
   <div class="w3-card-4 w3-margin w3-white">
-    <img src="/static/post_woods.jpeg" alt="Nature" style="width:100%">
+    <img src="${post.coverImage}" alt="Nature" style="width:100%">
     <div class="w3-container">
       <h3><b>${post.title}</b></h3>
-      <h5>Title description, <span class="w3-opacity">April 7, 2014</span></h5>
+      <h5>${post.subtitle}, <span class="w3-opacity">${post.date}</span></h5>
     </div>
 
     <div class="w3-container">

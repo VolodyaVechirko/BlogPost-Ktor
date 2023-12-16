@@ -11,9 +11,7 @@ val dao: PostDao = PostDaoImpl()
 
 fun Application.configureRouting() {
     routing {
-        static("/static") {
-            resources("files")
-        }
+        staticResources("/static", "files")
         get("/") {
             call.respondRedirect("articles")
         }

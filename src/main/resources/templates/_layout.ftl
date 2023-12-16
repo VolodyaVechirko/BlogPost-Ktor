@@ -37,7 +37,7 @@
       <div class="w3-col l4">
         <!-- About Card -->
         <div class="w3-card w3-margin w3-margin-top">
-          <img src="${author.avatarUrl}" style="width:100%">
+          <img src="${author.avatarUrl}" alt="Avatar" style="width:100%">
           <div class="w3-container w3-white">
             <h4><b>${author.fullName}</b></h4>
             <p>${author.aboutMe}</p>
