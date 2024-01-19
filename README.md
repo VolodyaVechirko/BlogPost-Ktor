@@ -1,40 +1,21 @@
 # BlogPost-Ktor
 Test Travel-blog site with api available. Powered by w3.css, Ktor and Freemarker.
 
-<p float="left">
-  <img src="screens/WebScreen1.png" width="100%" />
-</p>
+## Web site screens
 
-<p float="left">
-  <img src="screens/WebScreen2.png" width="100%" />
-</p>
+![WebScreen1](screens/WebScreen1.png)
 
-<p float="left">
-  <img src="screens/WebScreen3.png" width="100%" />
-</p>
+![WebScreen2](screens/WebScreen2.png)
 
-<p float="left">
-  Mobile adaptive version
-</p>
+![WebScreen3](screens/WebScreen3.png)
 
-<p float="left">
-  <img src="screens/MobileScreen1.png" width="48%" />
-  <img src="screens/MobileScreen3.png" width="48%" />
-</p>
+## Mobile adaptive version
 
-<p float="left">
-  <img src="screens/MobileScreen2.png" width="48%" />
-  <img src="screens/MobileScreen4.png" width="48%" />
-</p>
+| <img src="screens/MobileScreen1.png" width="100%"> | <img src="screens/MobileScreen3.png" width="100%"> |
+|------------|-------------|
 
-<p float="left">
-  Api requests
-</p>
+## Api requests sample
 
-<p float="left">
-  <img src="screens/ApiScreen1.png" width="100%" />
-</p>
+![ApiScreen1](screens/ApiScreen1.png)
 
-<p float="left">
-  <img src="screens/ApiScreen2.png" width="100%" />
-</p>
+![ApiScreen2](screens/ApiScreen2.png)
